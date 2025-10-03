@@ -254,10 +254,10 @@
             color: var(--primary-color);
         }
         
-        /* FEATURED CATEGORIES */
-        .featured-categories {
+        /* FEATURED PRODUCTS */
+        .featured-products {
             padding: 100px 0;
-            background: var(--white);
+            background: var(--light-bg);
         }
         
         .section-title {
@@ -280,76 +280,90 @@
             background-color: var(--primary-color);
         }
         
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .category-card {
+        /* CATEGORIES DROPDOWN */
+        .categories-dropdown {
+            max-width: 800px;
+            margin: 0 auto 50px;
             background: var(--white);
             border-radius: 10px;
-            overflow: hidden;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .category-image {
-            height: 300px;
             overflow: hidden;
         }
         
-        .category-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .category-item {
+            border-bottom: 1px solid var(--gray-light);
         }
         
-        .category-card:hover .category-image img {
-            transform: scale(1.1);
+        .category-item:last-child {
+            border-bottom: none;
         }
         
-        .category-info {
+        .category-header {
             padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
         }
         
-        .category-title {
-            font-size: 20px;
+        .category-header:hover {
+            background: var(--light-bg);
+        }
+        
+        .category-header h3 {
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 10px;
             color: var(--text-color);
             text-transform: uppercase;
         }
         
-        .category-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        .category-header i {
             transition: var(--transition);
         }
         
-        .category-link:hover {
-            gap: 10px;
+        .category-header.active i {
+            transform: rotate(180deg);
         }
         
-        /* FEATURED PRODUCTS */
-        .featured-products {
-            padding: 100px 0;
+        .subcategories {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
             background: var(--light-bg);
         }
         
+        .subcategories.active {
+            max-height: 500px;
+        }
+        
+        .subcategories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        
+        .subcategory {
+            background: var(--white);
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--gray);
+        }
+        
+        .subcategory:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* PRODUCTS GRID */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -850,7 +864,6 @@
                 font-size: 2.5rem;
             }
             
-            .categories-grid,
             .products-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
@@ -869,10 +882,13 @@
                 border-radius: 30px;
                 width: 100%;
             }
+            
+            .subcategories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
         }
         
         @media (max-width: 576px) {
-            .categories-grid,
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -881,7 +897,6 @@
                 padding: 100px 0;
             }
             
-            .featured-categories,
             .featured-products,
             .about,
             .contact {
@@ -890,6 +905,10 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            .subcategories-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -916,7 +935,6 @@
                 <nav id="mainNav">
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#categorias">Categorías</a></li>
                         <li><a href="#productos">Productos</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -941,55 +959,7 @@
                 <p>Descubre la colección más exclusiva de ropa femenina y accesorios en Chiclayo</p>
                 <div>
                     <a href="#productos" class="btn">Ver Colección</a>
-                    <a href="#categorias" class="btn btn-secondary">Explorar Categorías</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED CATEGORIES -->
-    <section class="featured-categories" id="categorias">
-        <div class="container">
-            <h2 class="section-title">Nuestras Categorías</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Accesorios" loading="lazy">
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-title">Accesorios</h3>
-                        <a href="#" class="category-link">Ver más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ropa" loading="lazy">
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-title">Ropa</h3>
-                        <a href="#" class="category-link">Ver más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vestidos" loading="lazy">
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-title">Vestidos</h3>
-                        <a href="#" class="category-link">Ver más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Zapatos" loading="lazy">
-                    </div>
-                    <div class="category-info">
-                        <h3 class="category-title">Zapatos</h3>
-                        <a href="#" class="category-link">Ver más <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <a href="#productos" class="btn btn-secondary">Explorar Categorías</a>
                 </div>
             </div>
         </div>
@@ -998,7 +968,77 @@
     <!-- FEATURED PRODUCTS -->
     <section class="featured-products" id="productos">
         <div class="container">
-            <h2 class="section-title">Productos Destacados</h2>
+            <h2 class="section-title">Nuestros Productos</h2>
+            
+            <!-- CATEGORIES DROPDOWN -->
+            <div class="categories-dropdown">
+                <div class="category-item">
+                    <div class="category-header" id="accesoriosHeader">
+                        <h3>ACCESORIOS</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="subcategories" id="accesoriosSubcategories">
+                        <div class="subcategories-grid">
+                            <div class="subcategory">ACERO</div>
+                            <div class="subcategory">ANILLO</div>
+                            <div class="subcategory">BILLETERA</div>
+                            <div class="subcategory">CARTERA</div>
+                            <div class="subcategory">CARTERA KAWAII</div>
+                            <div class="subcategory">CLIPS</div>
+                            <div class="subcategory">COLET</div>
+                            <div class="subcategory">COLET LARGO</div>
+                            <div class="subcategory">COLET NIÑA</div>
+                            <div class="subcategory">COLLAR</div>
+                            <div class="subcategory">CANCHO</div>
+                            <div class="subcategory">LAZO</div>
+                            <div class="subcategory">MONEDERO</div>
+                            <div class="subcategory">PAÑOLETA</div>
+                            <div class="subcategory">PEINETA</div>
+                            <div class="subcategory">SET</div>
+                            <div class="subcategory">TIC TAC</div>
+                            <div class="subcategory">VINCHA</div>
+                            <div class="subcategory">VINCHA MAQUILLAJE</div>
+                            <div class="subcategory">CINCHA KAWAII</div>
+                            <div class="subcategory">VINCHA BEBÉS</div>
+                            <div class="subcategory">VINCHA MURANO</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" id="ropaHeader">
+                        <h3>ROPA</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="subcategories" id="ropaSubcategories">
+                        <div class="subcategories-grid">
+                            <div class="subcategory">BLAZER</div>
+                            <div class="subcategory">CASACA</div>
+                            <div class="subcategory">ARDIGAN</div>
+                            <div class="subcategory">CHALECO</div>
+                            <div class="subcategory">CHOMPA</div>
+                            <div class="subcategory">SACO</div>
+                            <div class="subcategory">BODY</div>
+                            <div class="subcategory">BLUSA</div>
+                            <div class="subcategory">CAMISA</div>
+                            <div class="subcategory">CAPA</div>
+                            <div class="subcategory">CORSET</div>
+                            <div class="subcategory">POLO</div>
+                            <div class="subcategory">TOP</div>
+                            <div class="subcategory">FALDA</div>
+                            <div class="subcategory">FALSA/SHORT</div>
+                            <div class="subcategory">PANTALON</div>
+                            <div class="subcategory">SHORT</div>
+                            <div class="subcategory">VESTIDO LARGO</div>
+                            <div class="subcategory">VESTIDO CORTO</div>
+                            <div class="subcategory">MAXI VESTIDOS</div>
+                            <div class="subcategory">ENTERIZOS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PRODUCTS GRID -->
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-badge">Nuevo</div>
@@ -1115,4 +1155,282 @@
                 <div class="about-text">
                     <h2>Sobre Bluebell Boutique</h2>
                     <p>En Bluebell Boutique nos especializamos en brindarte las últimas tendencias en moda femenina y accesorios exclusivos. Nuestra misión es ayudarte a expresar tu estilo único con prendas de calidad que te hagan sentir segura y hermosa.</p>
-                    <p>Con sede en Chiclayo, llevamos moda de calidad a todo el Perú
+                    <p>Con sede en Chiclayo, llevamos moda de calidad a todo el Perú, ofreciendo envíos seguros y atención personalizada. Nuestro equipo está siempre disponible para asesorarte y ayudarte a encontrar las prendas perfectas para cada ocasión.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <div>
+                                <h4>Envíos a Todo el Perú</h4>
+                                <p>Recibe tus pedidos de forma rápida y segura</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>Calidad Garantizada</h4>
+                                <p>Productos seleccionados con los mejores materiales</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <h4>Atención Personalizada</h4>
+                                <p>Asesoramiento profesional para tu estilo único</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tags"></i>
+                            <div>
+                                <h4>Precios Competitivos</h4>
+                                <p>La mejor relación calidad-precio del mercado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sobre Bluebell Boutique" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Chiclayo, Perú</p>
+                    <p><i class="fas fa-phone"></i> 974 804 467</p>
+                    <p><i class="fas fa-envelope"></i> bluebellchiclayo@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Atención: Lunes a Sábado 9AM - 7PM</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/bluebell_boutiquee" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@bluebell.boutique" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/51974804467" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    
+                    <a href="https://wa.me/51974804467" class="btn" style="margin-top: 20px;">
+                        <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BLUEBELL BOUTIQUE</h3>
+                    <p>Tu tienda de confianza para moda femenina y accesorios de calidad en Chiclayo. Ofrecemos las últimas tendencias con estilo y elegancia.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/bluebell_boutiquee" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@bluebell.boutique" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/51974804467" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#productos"><i class="fas fa-chevron-right"></i> Productos</a></li>
+                        <li><a href="#nosotros"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horario de Atención</h3>
+                    <p><i class="far fa-clock"></i> Lunes a Sábado: 9:00 AM - 7:00 PM</p>
+                    <p><i class="fas fa-store-slash"></i> Domingos: Cerrado</p>
+                    <p><i class="fas fa-truck"></i> Envíos a todo el Perú</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Medios de Pago</h3>
+                    <p><i class="fas fa-university"></i> Transferencia Bancaria</p>
+                    <p><i class="fas fa-mobile-alt"></i> Yape / Plin</p>
+                    <p><i class="fas fa-money-bill-wave"></i> Efectivo</p>
+                    <div class="payment-methods">
+                        <div class="payment-method">BCP</div>
+                        <div class="payment-method">BBVA</div>
+                        <div class="payment-method">YAPE</div>
+                        <div class="payment-method">PLIN</div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 BLUEBELL BOUTIQUE. Todos los derechos reservados. | Chiclayo, Perú</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 50) {
+                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Categories Dropdown Functionality
+        const accesoriosHeader = document.getElementById('accesoriosHeader');
+        const accesoriosSubcategories = document.getElementById('accesoriosSubcategories');
+        const ropaHeader = document.getElementById('ropaHeader');
+        const ropaSubcategories = document.getElementById('ropaSubcategories');
+
+        accesoriosHeader.addEventListener('click', function() {
+            accesoriosSubcategories.classList.toggle('active');
+            accesoriosHeader.classList.toggle('active');
+        });
+
+        ropaHeader.addEventListener('click', function() {
+            ropaSubcategories.classList.toggle('active');
+            ropaHeader.classList.toggle('active');
+        });
+
+        // Subcategory click handler
+        document.querySelectorAll('.subcategory').forEach(subcategory => {
+            subcategory.addEventListener('click', function() {
+                const category = this.closest('.category-item').querySelector('h3').textContent;
+                const subcategoryName = this.textContent;
+                
+                // Create WhatsApp message
+                const message = `Hola! Estoy interesada en productos de la categoría ${category}, específicamente en ${subcategoryName}. ¿Podrían enviarme más información?`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/51974804467?text=${encodedMessage}`;
+                
+                // Open WhatsApp
+                window.open(whatsappURL, '_blank');
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+            this.reset();
+        });
+
+        // Product animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe product cards and about paragraphs
+        document.querySelectorAll('.product-card, .about-text p').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
