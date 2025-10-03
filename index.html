@@ -282,7 +282,7 @@
         
         /* CATEGORIES DROPDOWN */
         .categories-dropdown {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto 50px;
             background: var(--white);
             border-radius: 10px;
@@ -334,14 +334,35 @@
         }
         
         .subcategories.active {
-            max-height: 500px;
+            max-height: 1000px;
         }
         
         .subcategories-grid {
+            padding: 20px;
+        }
+        
+        .subcategory-group {
+            margin-bottom: 25px;
+        }
+        
+        .subcategory-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .subcategory-group-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--gray);
+            text-transform: uppercase;
+        }
+        
+        .subcategories-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
-            padding: 20px;
         }
         
         .subcategory {
@@ -883,7 +904,7 @@
                 width: 100%;
             }
             
-            .subcategories-grid {
+            .subcategories-list {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
@@ -907,7 +928,7 @@
                 font-size: 2rem;
             }
             
-            .subcategories-grid {
+            .subcategories-list {
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -979,28 +1000,30 @@
                     </div>
                     <div class="subcategories" id="accesoriosSubcategories">
                         <div class="subcategories-grid">
-                            <div class="subcategory">ACERO</div>
-                            <div class="subcategory">ANILLO</div>
-                            <div class="subcategory">BILLETERA</div>
-                            <div class="subcategory">CARTERA</div>
-                            <div class="subcategory">CARTERA KAWAII</div>
-                            <div class="subcategory">CLIPS</div>
-                            <div class="subcategory">COLET</div>
-                            <div class="subcategory">COLET LARGO</div>
-                            <div class="subcategory">COLET NIÑA</div>
-                            <div class="subcategory">COLLAR</div>
-                            <div class="subcategory">CANCHO</div>
-                            <div class="subcategory">LAZO</div>
-                            <div class="subcategory">MONEDERO</div>
-                            <div class="subcategory">PAÑOLETA</div>
-                            <div class="subcategory">PEINETA</div>
-                            <div class="subcategory">SET</div>
-                            <div class="subcategory">TIC TAC</div>
-                            <div class="subcategory">VINCHA</div>
-                            <div class="subcategory">VINCHA MAQUILLAJE</div>
-                            <div class="subcategory">CINCHA KAWAII</div>
-                            <div class="subcategory">VINCHA BEBÉS</div>
-                            <div class="subcategory">VINCHA MURANO</div>
+                            <div class="subcategories-list">
+                                <div class="subcategory">ACERO</div>
+                                <div class="subcategory">ANILLO</div>
+                                <div class="subcategory">BILLETERA</div>
+                                <div class="subcategory">CARTERA</div>
+                                <div class="subcategory">CARTERA KAWAII</div>
+                                <div class="subcategory">CLIPS</div>
+                                <div class="subcategory">COLET</div>
+                                <div class="subcategory">COLET LARGO</div>
+                                <div class="subcategory">COLET NIÑA</div>
+                                <div class="subcategory">COLLAR</div>
+                                <div class="subcategory">CANCHO</div>
+                                <div class="subcategory">LAZO</div>
+                                <div class="subcategory">MONEDERO</div>
+                                <div class="subcategory">PAÑOLETA</div>
+                                <div class="subcategory">PEINETA</div>
+                                <div class="subcategory">SET</div>
+                                <div class="subcategory">TIC TAC</div>
+                                <div class="subcategory">VINCHA</div>
+                                <div class="subcategory">VINCHA MAQUILLAJE</div>
+                                <div class="subcategory">CINCHA KAWAII</div>
+                                <div class="subcategory">VINCHA BEBÉS</div>
+                                <div class="subcategory">VINCHA MURANO</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1012,27 +1035,61 @@
                     </div>
                     <div class="subcategories" id="ropaSubcategories">
                         <div class="subcategories-grid">
-                            <div class="subcategory">BLAZER</div>
-                            <div class="subcategory">CASACA</div>
-                            <div class="subcategory">ARDIGAN</div>
-                            <div class="subcategory">CHALECO</div>
-                            <div class="subcategory">CHOMPA</div>
-                            <div class="subcategory">SACO</div>
-                            <div class="subcategory">BODY</div>
-                            <div class="subcategory">BLUSA</div>
-                            <div class="subcategory">CAMISA</div>
-                            <div class="subcategory">CAPA</div>
-                            <div class="subcategory">CORSET</div>
-                            <div class="subcategory">POLO</div>
-                            <div class="subcategory">TOP</div>
-                            <div class="subcategory">FALDA</div>
-                            <div class="subcategory">FALSA/SHORT</div>
-                            <div class="subcategory">PANTALON</div>
-                            <div class="subcategory">SHORT</div>
-                            <div class="subcategory">VESTIDO LARGO</div>
-                            <div class="subcategory">VESTIDO CORTO</div>
-                            <div class="subcategory">MAXI VESTIDOS</div>
-                            <div class="subcategory">ENTERIZOS</div>
+                            <!-- ABRIGOS/CASACAS -->
+                            <div class="subcategory-group">
+                                <h4 class="subcategory-group-title">ABRIGOS/CASACAS</h4>
+                                <div class="subcategories-list">
+                                    <div class="subcategory">BLAZER</div>
+                                    <div class="subcategory">CASACA</div>
+                                    <div class="subcategory">ARDIGAN</div>
+                                    <div class="subcategory">CHALECO</div>
+                                    <div class="subcategory">CHOMPA</div>
+                                    <div class="subcategory">SACO</div>
+                                </div>
+                            </div>
+                            
+                            <!-- PRENDAS SUPERIORES -->
+                            <div class="subcategory-group">
+                                <h4 class="subcategory-group-title">PRENDAS SUPERIORES</h4>
+                                <div class="subcategories-list">
+                                    <div class="subcategory">BODY</div>
+                                    <div class="subcategory">BLUSA</div>
+                                    <div class="subcategory">CAMISA</div>
+                                    <div class="subcategory">CAPA</div>
+                                    <div class="subcategory">CORSET</div>
+                                    <div class="subcategory">POLO</div>
+                                    <div class="subcategory">TOP</div>
+                                </div>
+                            </div>
+                            
+                            <!-- PRENDAS INFERIORES -->
+                            <div class="subcategory-group">
+                                <h4 class="subcategory-group-title">PRENDAS INFERIORES</h4>
+                                <div class="subcategories-list">
+                                    <div class="subcategory">FALDA</div>
+                                    <div class="subcategory">FALSA/SHORT</div>
+                                    <div class="subcategory">PANTALON</div>
+                                    <div class="subcategory">SHORT</div>
+                                </div>
+                            </div>
+                            
+                            <!-- VESTIDOS -->
+                            <div class="subcategory-group">
+                                <h4 class="subcategory-group-title">VESTIDOS</h4>
+                                <div class="subcategories-list">
+                                    <div class="subcategory">VESTIDO LARGO</div>
+                                    <div class="subcategory">VESTIDO CORTO</div>
+                                    <div class="subcategory">MAXIVESTIDOS</div>
+                                </div>
+                            </div>
+                            
+                            <!-- ENTERIZOS -->
+                            <div class="subcategory-group">
+                                <h4 class="subcategory-group-title">ENTERIZOS</h4>
+                                <div class="subcategories-list">
+                                    <div class="subcategory">ENTERIZOS</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
