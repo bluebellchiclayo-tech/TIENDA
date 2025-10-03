@@ -234,8 +234,8 @@
             box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
         }
         
-        /* FEATURED PRODUCTS */
-        .featured-products {
+        /* CATEGORIES SECTION */
+        .categories {
             padding: 80px 0;
             background: var(--white);
         }
@@ -258,6 +258,92 @@
             width: 80px;
             height: 3px;
             background-color: var(--primary-color);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .category-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .category-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .category-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .category-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+        
+        .category-info {
+            padding: 25px;
+        }
+        
+        .category-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            text-align: center;
+        }
+        
+        .subcategories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .subcategory {
+            background: var(--light-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .subcategory:hover {
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+        }
+        
+        /* FEATURED PRODUCTS */
+        .featured-products {
+            padding: 80px 0;
+            background: var(--light-bg);
         }
         
         .products-grid {
@@ -332,7 +418,7 @@
         /* ABOUT SECTION */
         .about {
             padding: 80px 0;
-            background: var(--light-bg);
+            background: var(--white);
             text-align: center;
         }
         
@@ -362,7 +448,7 @@
         /* CONTACT SECTION */
         .contact {
             padding: 80px 0;
-            background: var(--white);
+            background: var(--light-bg);
         }
         
         .contact-grid {
@@ -543,6 +629,7 @@
                 font-size: 2.5rem;
             }
             
+            .categories-grid,
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -571,6 +658,7 @@
                 <nav id="mainNav">
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#categorias">Categorías</a></li>
                         <li><a href="#productos">Productos</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -593,7 +681,94 @@
             <div class="hero-content">
                 <h1>Descubre tu Estilo Único con Bluebell</h1>
                 <p>Moda femenina y accesorios exclusivos en Chiclayo</p>
-                <a href="#productos" class="btn">Ver Colección</a>
+                <a href="#categorias" class="btn">Explorar Categorías</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories" id="categorias">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Accesorios" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">ACCESORIOS</h3>
+                        <div class="subcategories">
+                            <span class="subcategory">ACERO</span>
+                            <span class="subcategory">ANILLO</span>
+                            <span class="subcategory">BILLETERA</span>
+                            <span class="subcategory">CARTERA</span>
+                            <span class="subcategory">CARTERA KAWAII</span>
+                            <span class="subcategory">CLIPS</span>
+                            <span class="subcategory">COLET</span>
+                            <span class="subcategory">COLET LARGO</span>
+                            <span class="subcategory">COLET NIÑA</span>
+                            <span class="subcategory">COLLAR</span>
+                            <span class="subcategory">CANCHO</span>
+                            <span class="subcategory">LAZO</span>
+                            <span class="subcategory">MONEDERO</span>
+                            <span class="subcategory">PAÑOLETA</span>
+                            <span class="subcategory">PEINETA</span>
+                            <span class="subcategory">SET</span>
+                            <span class="subcategory">TIC TAC</span>
+                            <span class="subcategory">VINCHA</span>
+                            <span class="subcategory">VINCHA MAQUILLAJE</span>
+                            <span class="subcategory">CINCHA KAWAII</span>
+                            <span class="subcategory">VINCHA BEBÉS</span>
+                            <span class="subcategory">VINCHA MURANO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ropa" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-title">ROPA</h3>
+                        <div class="subcategories">
+                            <div style="margin-bottom: 10px;">
+                                <strong style="display: block; margin-bottom: 5px; color: var(--primary-color);">ABRIGOS/CASACAS</strong>
+                                <span class="subcategory">BLAZER</span>
+                                <span class="subcategory">CASACA</span>
+                                <span class="subcategory">ARDIGAN</span>
+                                <span class="subcategory">CHALECO</span>
+                                <span class="subcategory">CHOMPA</span>
+                                <span class="subcategory">SACO</span>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="display: block; margin-bottom: 5px; color: var(--primary-color);">PRENDAS SUPERIORES</strong>
+                                <span class="subcategory">BODY</span>
+                                <span class="subcategory">BLUSA</span>
+                                <span class="subcategory">CAMISA</span>
+                                <span class="subcategory">CAPA</span>
+                                <span class="subcategory">CORSET</span>
+                                <span class="subcategory">POLO</span>
+                                <span class="subcategory">TOP</span>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="display: block; margin-bottom: 5px; color: var(--primary-color);">PRENDAS INFERIORES</strong>
+                                <span class="subcategory">FALDA</span>
+                                <span class="subcategory">FALSA/SHORT</span>
+                                <span class="subcategory">PANTALON</span>
+                                <span class="subcategory">SHORT</span>
+                            </div>
+                            <div>
+                                <strong style="display: block; margin-bottom: 5px; color: var(--primary-color);">VESTIDOS</strong>
+                                <span class="subcategory">VESTIDO LARGO</span>
+                                <span class="subcategory">VESTIDO CORTO</span>
+                                <span class="subcategory">MAXI VESTIDOS</span>
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <strong style="display: block; margin-bottom: 5px; color: var(--primary-color);">ENTERIZOS</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -695,6 +870,7 @@
                     <h3>Enlaces Rápidos</h3>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#categorias">Categorías</a></li>
                         <li><a href="#productos">Productos</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -808,8 +984,24 @@
         }, observerOptions);
 
         // Observe product cards and about paragraphs
-        document.querySelectorAll('.product-card, .about-content p').forEach(el => {
+        document.querySelectorAll('.category-card, .product-card, .about-content p').forEach(el => {
             observer.observe(el);
+        });
+
+        // Subcategory click handler
+        document.querySelectorAll('.subcategory').forEach(subcategory => {
+            subcategory.addEventListener('click', function() {
+                const category = this.closest('.category-card').querySelector('.category-title').textContent;
+                const subcategoryName = this.textContent;
+                
+                // Create WhatsApp message
+                const message = `Hola! Estoy interesada en productos de la categoría ${category}, específicamente en ${subcategoryName}. ¿Podrían enviarme más información?`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/51974804467?text=${encodedMessage}`;
+                
+                // Open WhatsApp
+                window.open(whatsappURL, '_blank');
+            });
         });
     </script>
 </body>
