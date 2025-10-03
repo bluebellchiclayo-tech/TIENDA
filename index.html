@@ -76,6 +76,37 @@
             100% { transform: rotate(360deg); }
         }
         
+        /* TOP BAR */
+        .top-bar {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .top-social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .top-social-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .top-social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
         /* HEADER */
         header {
             background-color: var(--white);
@@ -99,13 +130,6 @@
             color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            font-size: 24px;
         }
         
         nav ul {
@@ -185,6 +209,37 @@
             font-size: 24px;
             cursor: pointer;
             color: var(--text-color);
+        }
+        
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         /* HERO SECTION */
@@ -793,8 +848,8 @@
         /* BACK TO TOP BUTTON */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 90px;
+            right: 25px;
             width: 50px;
             height: 50px;
             background: var(--primary-color);
@@ -846,6 +901,10 @@
         }
         
         @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+            
             .header-content {
                 flex-direction: row;
                 gap: 20px;
@@ -907,6 +966,14 @@
             .subcategories-list {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -942,14 +1009,30 @@
         <div class="loader-spinner"></div>
     </div>
 
+    <!-- TOP BAR WITH SOCIAL LINKS -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-social-links">
+                    <a href="https://www.instagram.com/bluebell_boutiquee" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@bluebell.boutique" target="_blank" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/51974804467" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-crown"></i>
-                    BLUEBELL BOUTIQUE
-                </div>
+                <div class="logo">BLUEBELL BOUTIQUE</div>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -971,6 +1054,11 @@
             </div>
         </div>
     </header>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/51974804467" class="whatsapp-float" target="_blank" title="Chatea con nosotros por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- HERO SECTION -->
     <section class="hero" id="inicio">
